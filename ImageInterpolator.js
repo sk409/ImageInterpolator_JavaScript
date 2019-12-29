@@ -11,7 +11,7 @@ class ImageIndex {
 }
 class ImageInterpolator {
 
-    nearestNeighbor(data, srcWidth, srcHeight, dstWidth, dstHeight) {
+    static nearestNeighbor(data, srcWidth, srcHeight, dstWidth, dstHeight) {
         const result = new Array(dstWidth * dstHeight);
         const ratioX = dstWidth / srcWidth;
         const ratioY = dstHeight / srcHeight;
@@ -30,7 +30,7 @@ class ImageInterpolator {
         return result;
     }
 
-    bilinear(data, srcWidth, srcHeight, dstWidth, dstHeight) {
+    static bilinear(data, srcWidth, srcHeight, dstWidth, dstHeight) {
         const result = new Array(dstWidth * dstHeight);
         const ratioX = dstWidth / srcWidth;
         const ratioY = dstHeight / srcHeight;
@@ -61,7 +61,7 @@ class ImageInterpolator {
         return result;
     }
 
-    bicubic(data, srcWidth, srcHeight, dstWidth, dstHeight, a = -1) {
+    static bicubic(data, srcWidth, srcHeight, dstWidth, dstHeight, a = -1) {
         const weight = (t) => {
             const abst = Math.abs(t);
             if (abst <= 1) {
@@ -115,7 +115,7 @@ class ImageInterpolator {
         return result;
     }
 
-    lanczos(data, srcWidth, srcHeight, dstWidth, dstHeight, n = 3) {
+    static lanczos(data, srcWidth, srcHeight, dstWidth, dstHeight, n = 3) {
         const sinc = (x) => {
             if (x === 0) {
                 return 1;
